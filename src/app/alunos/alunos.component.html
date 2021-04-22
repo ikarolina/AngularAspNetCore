@@ -1,9 +1,11 @@
-<h1>{{titulo}}</h1>
-<ul>
-<li *ngFor="let aluno of alunos">{{aluno.nome}}</li>
-</ul>
-
-<table class="table">
+<div *ngIf="alunoSelecionado">
+  <!-- <h1>{{titulo}}</h1><ul><li *ngFor="let aluno of alunos">{{aluno.nome}}</li></ul> -->
+  <app-titulo [titulo]="'Aluno:' + alunoSelecionado"></app-titulo>
+  <br>
+  <button class="btn btn-default" (click)="Voltar()">Voltar</button>
+</div>
+<div *ngIf="!alunoSelecionado">
+  <table class="table table table-hover">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -13,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let aluno of alunos">
+      <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="AlunoSelect(aluno)">
         <th scope="row">{{aluno.id}}</th>
         <td>{{aluno.nome}}</td>
         <td>{{aluno.sobrenome}}</td>
@@ -21,3 +23,4 @@
       </tr>
     </tbody>
   </table>
+</div>
