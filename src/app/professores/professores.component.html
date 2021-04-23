@@ -1,21 +1,57 @@
-<h1>{{titulo}}</h1>
-<ul>
-  <li *ngFor="let prof of professores">{{prof.nome}}</li>
-</ul>
+<div class="row">
+  <div class="col-sm-6" *ngIf="professorSelecionado">
+    <!-- <h1>{{titulo}}</h1> -->
+    <div class="row">
+      <div class="mr-auto">
+        <app-titulo [titulo]="'Professor:' + professorSelecionado.id"></app-titulo>
+      </div>
+      <div class="mt-1">
+        <button class="btn btn-outline-danger" (click)="Voltar()">Fechar</button>
+      </div>
+    </div>
+  
+    <form>
+      <div class="mb-3">
+        <label for="fromGroupExam" class="form-label">Nome</label>
+        <input type="text" value="{{professorSelecionado.nome}}" class="form-control">
+      </div>
+  
+      <div class="mb-3">
+        <label for="fromGroupExam" class="form-label">Disciplina</label>
+        <input type="text" value="{{professorSelecionado.disciplina}}" class="form-control">
+      </div>
+    </form>
+    <div class="form-group">  
+      <hr>
+      <div class="btn btn-success">Enviar</div>
+    </div>
+  </div>
+  
+  <div [ngClass]="{'col-sm-6': professorSelecionado, 'col-sm-12': !professorSelecionado}" >
+    <!-- <app-titulo [titulo]="titulo"></app-titulo> -->
+  
+    <!-- <ul>
+      <li >{{prof.nome}}</li>
+    </ul> -->
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Disciplina</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prof of professores" style="cursor: pointer;" (click)="ProfessorSelect(prof)">
+          <th scope="row">{{prof.id}}</th>
+          <td>{{prof.nome}}</td>
+          <td>{{prof.disciplina}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Disciplina</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let prof of professores">
-      <th scope="row">{{prof.id}}</th>
-      <td>{{prof.nome}}</td>
-      <td>{{prof.disciplina}}</td>
-    </tr>
-  </tbody>
-</table>
+
+</div> 

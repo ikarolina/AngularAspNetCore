@@ -1,8 +1,29 @@
 <div *ngIf="alunoSelecionado">
   <!-- <h1>{{titulo}}</h1><ul><li *ngFor="let aluno of alunos">{{aluno.nome}}</li></ul> -->
-  <app-titulo [titulo]="'Aluno:' + alunoSelecionado"></app-titulo>
-  <br>
-  <button class="btn btn-default" (click)="Voltar()">Voltar</button>
+  <div class="row">
+    <div class="mr-auto">
+      <app-titulo [titulo]="'Aluno:' + alunoSelecionado.id"></app-titulo>
+    </div>
+    <div class="mt-1">
+      <button class="btn btn-warning" (click)="Voltar()">Voltar</button>
+    </div>
+  </div>
+
+  <form>
+    <div class="mb-3">
+      <label for="fromGroupExam" class="form-label">Nome</label>
+      <input type="text" value="{{alunoSelecionado.nome}}" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="fromGroupExam" class="form-label">Sobrenome</label>
+      <input type="text" value="{{alunoSelecionado.sobrenome}}" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="fromGroupExam" class="form-label">Telefone</label>
+      <input type="text" value="{{alunoSelecionado.telefone}}" class="form-control">
+    </div>
+  </form>
 </div>
 <div *ngIf="!alunoSelecionado">
   <table class="table table table-hover">
